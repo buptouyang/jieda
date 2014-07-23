@@ -78,7 +78,9 @@ nav{
 	height: 36px;
 	cursor: pointer;
 }
-
+.main{
+	position: relative;
+}
 .box{ position:fixed; _position:absolute; width:100%;}
 .box1{
 	background: url("image/topbg5.png");
@@ -237,6 +239,7 @@ nav{
 	height: 250px;
 	position: relative;
 	background-size: 100%;
+	margin-top:100px; 
 }
 
 .leaf1{

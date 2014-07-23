@@ -10,8 +10,8 @@ KISSY.use('dom,anim,ajax,cookie,gallery/lineParallax/0.5/index',function(S,DOM,A
 		windowH,
 		time,
 		prev,
-		iniTop=[0,-180,0,0,0,0,0],
-		box_toTop=[0,0,0,0,0,0,0];
+		iniTop=[0,0,0,0,0,0],
+		box_toTop=[0,0,0,0,0,0];
 	//视差	
 	
 
@@ -71,7 +71,7 @@ KISSY.use('dom,anim,ajax,cookie,gallery/lineParallax/0.5/index',function(S,DOM,A
 				windowH = $(window).height();
 				//windowH >1000 ? : $('#parallax').css({height: 5000+windowH});
 			}).resize();
-			$('#parallax').css({height: 1795}) 	
+			$('#parallax').css({height: 1910}) 	
 			/*$(document).mousewheel(function(e, delta){
 				window.scrollBy(0,delta * -100);
 			});*/
@@ -91,16 +91,16 @@ KISSY.use('dom,anim,ajax,cookie,gallery/lineParallax/0.5/index',function(S,DOM,A
 	    control -= xjb_windowOffset;
 		
 		
-		box_toTop[0]=control*0.1;  //头部
-		box_toTop[1]=control*0.1;  //中间
-		box_toTop[2]=control*-0.01;  //上左右树叶
-		box_toTop[3]=control*-0.1;  //下左右树叶
-		box_toTop[4]=control*0.3; //左红车
-		box_toTop[5]=control*0.6; //左白车
-		box_toTop[6]=control*-0.5; //右白车向上
+		box_toTop[0]=control*0.1;  //背景
+		box_toTop[1]=control*0.2;  //上左右树叶
+		box_toTop[2]=control*-0.1;  //下左右树叶
+		box_toTop[3]=control*0.6;  //左红车
+		box_toTop[4]=control*0.8; //左白车
+		box_toTop[5]=control*-0.5; //右白车
 		
 		
-		for(var i=0;i<7;i++){
+		
+		for(var i=0;i<6;i++){
 			var diff=Math.round(iniTop[i] -box_toTop[i]);
 			iniTop[i]-=diff/8;
 			iniTop[i]=(iniTop[i]-(scrollY/8));
@@ -109,9 +109,9 @@ KISSY.use('dom,anim,ajax,cookie,gallery/lineParallax/0.5/index',function(S,DOM,A
 		
 	    if(diff != prev){
 	    	
-			for(var i=1;i<=7;i++){
-				var top=iniTop[i-1]+'px';
-	        	document.getElementById("box"+i).style.top=top;
+			for(var i=0;i<6;i++){
+				var top=iniTop[i]+'px';
+	        	document.getElementById("parallax"+i).style.top=top;
 			}
 			onupdate();
 			prev = diff;
@@ -154,8 +154,8 @@ KISSY.use('dom,anim,ajax,cookie,gallery/lineParallax/0.5/index',function(S,DOM,A
 			open2=true;
 		}
 
-		var car=S.all(".jiedacar");
-		scrollY>=200 ? (car.fadeOut(.5)):(car.fadeIn(.5));
+		/*var car=S.all(".jiedacar");
+		scrollY>=200 ? (car.fadeOut(.5)):(car.fadeIn(.5));*/
 	}
 
 	
