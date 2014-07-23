@@ -103,19 +103,21 @@ KISSY.use('dom,anim,ajax,cookie,gallery/lineParallax/0.5/index',function(S,DOM,A
 	//太阳
 	var sunMove=S.get('.sun');
 	var step = 0;
-	var r = 220;
+	var r = -150;
+	
 	var timer=setInterval(function () {
 			/*r=r+1;
 			 if(r>600){
 					r-=1;
 			}*/
-			if (step == 360) {
-					step = 1;
-			}
-			//sunMove.style.left = 170- r * Math.sin(step)+"px";
-			//sunMove.style.top =10+ r * Math.cos(step)+"px";
-			step += 1/200;
+			/*if (step > 1.5) {
+					 var a=window.clearInterval(timer);
+			}*/
+			/*sunMove.style.left = 80- r * Math.sin(step)+"px";
+			sunMove.style.top = 100 + r * Math.cos(step)+"px";*/
+			step += 1/400;
 	}, 1);
+	
 
 	//视差
 	

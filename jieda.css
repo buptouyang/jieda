@@ -9,6 +9,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 }
 .container {
 	font:12px/1.5 '微软雅黑';
+	overflow: hidden;
 }
 .container li {
 	list-style:none;
@@ -86,14 +87,34 @@ nav{
 	width:100%;
 }
 .box2{
-	background: #4a351b url("image/bgbottom.png")  no-repeat;
+	background: #4a351b url("image/bg.png")  no-repeat;
 	height: 2200px;
 	width: 100%;
 	position: relative;
 	top:-136px;
 	z-index: 10;
+	min-width:1076px; 
  	/* background-size: 100%; */
-
+}
+.box3{
+	z-index: 30;
+	position: relative;
+}
+.box4{
+	z-index: 30;
+	position: relative;
+}
+.box5{
+	z-index: 20;
+	position: relative;
+}
+.box6{
+	z-index: 20;
+	position: relative;
+}
+.box7{
+	z-index: 20;
+	position: relative;
 }
 .box1 .mount{
 	height:256px;
@@ -210,4 +231,71 @@ nav{
 	background: url("image/pic.png") center no-repeat;
 	width:1077px;
 	height: 717px;
+}
+.bottom{
+	background:#4a351b url("image/bottom.png") bottom no-repeat;
+	height: 250px;
+	position: relative;
+	background-size: 100%;
+}
+
+.leaf1{
+	background: url("image/leaf_1.png") no-repeat;
+	width:142px;
+	height: 244px;
+	position: absolute;
+	top:-1900px;
+	left:0;
+	z-index: 30;
+}
+.leaf2{
+	background: url("image/leaf_2.png") no-repeat;
+	width:106px;
+	height: 108px;
+	position: absolute;
+	top:-1000px;
+	left:0;
+	z-index: 30;
+}
+.leaf3{
+	background: url("image/leaf_3.png") no-repeat;
+	width:187px;
+	height: 244px;
+	position: absolute;
+	top:-2300px;
+	right:0;
+	z-index: 30;
+}
+.leaf4{
+	background: url("image/leaf_4.png") no-repeat;
+	width:171px;
+	height: 167px;
+	position: absolute;
+	top:-1200px;
+	right:0;
+	z-index: 30;
+}
+.car1{
+	background: url("image/left_red.png") no-repeat;
+	width:133px;
+	height: 280px;
+	position: absolute;
+	top:-2000px;
+	left:5%;
+}
+.car2{
+	background: url("image/left_white.png") no-repeat;
+	width:104px;
+	height: 229px;
+	position: absolute;
+	top:-1500px;
+	left:9%;
+}
+.car3{
+	background: url("image/right_white.png") no-repeat;
+	width:105px;
+	height: 220px;
+	position: absolute;
+	top:-1100px;
+	right:5%;
 }
