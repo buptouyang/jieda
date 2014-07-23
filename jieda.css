@@ -1,0 +1,213 @@
+/* css reset */
+html {
+	color:#000;
+	background:#FFF;
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td {
+	margin:0;
+	padding:0;
+}
+.container {
+	font:12px/1.5 '微软雅黑';
+}
+.container li {
+	list-style:none;
+}
+.container a {
+	text-decoration:none;
+	color:#000000;
+}
+.container img {
+	display:block;
+	font-size:0;
+	border:none;
+}
+.container em,.container strong {
+	font-style:normal;
+	font-weight:normal;
+}
+.container input,.container textarea,.container select {
+	*font-size:100%;
+}
+.clearfix:after {
+	content:'.';
+	display:block;
+	clear:both;
+	visibility:hidden;
+	height:0;
+}
+.clearfix {
+	zoom:1;
+}
+/* end */
+
+/* 右侧导航 */
+nav{
+	height: 36px;
+	width:100%;
+	background: #929292;
+}
+.sideNavbg{
+	background: url("image/sidenav.png") no-repeat;
+	width:112px;
+	height: 288px;
+	position:fixed;
+	top:400px;
+	right:60px;
+	z-index: 80;
+}
+.sideNav{
+	padding:25px 12px 0 12px;
+}
+.sideNav li:not(:last-child){
+	border-bottom: dashed 1px;
+}
+.sideNav li a{
+	color:#613c0e;
+	width:100%;
+	display: block;
+	height: 35px;
+	line-height: 35px;
+	font-size: 16px;
+	text-align: center;
+	font-weight: bold;
+}
+.sideNavbg .toTop{
+	background: url("image/totop.png")  center no-repeat;
+	height: 36px;
+	cursor: pointer;
+}
+
+.box{ position:fixed; _position:absolute; width:100%;}
+.box1{
+	background: url("image/topbg5.png");
+	height:640px;
+	position: relative;
+	width:100%;
+}
+.box2{
+	background: #4a351b url("image/bgbottom.png")  no-repeat;
+	height: 2200px;
+	width: 100%;
+	position: relative;
+	top:-136px;
+	z-index: 10;
+ 	/* background-size: 100%; */
+
+}
+.box1 .mount{
+	height:256px;
+	background: url("image/mount.png") center no-repeat;
+	position: relative;
+	top:-200px;
+	z-index: 5;
+}
+.box1 .cloud{ position:fixed; left:50%;}
+.box1 .cloud1{ 
+	width:66px;
+	height:31px; 
+	top:170px; 
+	margin-left:-500px; 
+	background:url("image/cloud1.png") no-repeat;
+	z-index: 10;
+}
+.box1 .cloud2{ 
+	width:135px; 
+	height:64px; 
+	top:250px; 
+	margin-left:-460px; 
+	background:url("image/cloud_2.png") no-repeat; 
+	z-index: 10;
+}
+.box1 .cloud3{ 
+	width:147px; 
+	height:68px; 
+	top:130px; 
+	margin-left:250px; 
+	background:url("image/cloud_3.png") no-repeat; 
+}
+.box1 .cloud4{ 
+	width:66px; 
+	height:31px; 
+	top:320px; 
+	margin-left:400px; 
+	background:url("image/cloud4.png") no-repeat; 
+	
+}
+.box1 .jiedacar{
+	width:968px;
+	height: 562px;
+	margin:auto;
+	background:url("image/topbg7.png") no-repeat; 
+	position: relative;
+	z-index: 30;
+}
+.box1 .arrowMove{
+	background: url("image/tip.png") no-repeat;
+	width:34px;
+	height: 31px;
+	position: absolute;
+	top:340px;
+	left:750px;
+}
+.box1 .sun{
+	background:url("image/sun.png") no-repeat; 
+	width:579px;
+	height: 524px;
+	position: absolute;
+	top:-20px;
+	left:250px;
+	display: block;
+	z-index: 0;
+}
+.box2 .timeMachine {
+	background: url("image/timemachine.png") no-repeat;
+	height: 466px;
+	width: 1076px;
+	margin: auto;
+	top: 40px;
+	position: relative;
+}
+.box2 .getPrice{
+	background:#673b06; 
+	height: 467px;
+	width:1077px;
+	margin:auto;
+	border-radius: 40px 0;
+	margin-top: 100px;
+}
+.box2 .tryDrive{
+	background: url("image/trydrive.png") no-repeat center;
+	height: 130px;
+	width:1077px;
+	margin:auto;
+	margin-top: 40px;
+	position: relative;
+}
+.tryDrive .trybox{
+	width:188px;
+	height:67px;
+	position: absolute;
+	left:820px;
+	top:60px;
+}
+.tryDrive .try{
+	background: url("image/try.png");
+	width:188px;
+	height:67px;
+	display: block;
+	cursor:pointer;	
+}
+.box2 .displayPic{
+	width:1077px;
+	height: 717px;
+	margin:auto;
+	background:#673b06; 
+	border-radius: 0 40px;
+	margin-top:40px;
+}
+.displayPic .pic{
+	background: url("image/pic.png") center no-repeat;
+	width:1077px;
+	height: 717px;
+}
