@@ -173,7 +173,58 @@
 	<div class="box box2" id="box2">
 		<div class="timeMachine"></div>
 		<div class="getPrice">
-      <div class="lottery"></div>
+      <div class="lottery">
+        <div class="lotteryBox">
+          <!--遮层-->
+          <div class="luck-shade"></div>
+
+          <!--span的个数和排列与设计稿上的一致-->
+          <div class="lotteryBox-row">
+            <span class="lottery-luck" id="lottery-luck0"></span>
+            <span class="lottery-luck" id="lottery-luck1"></span>
+            <span class="lottery-luck" id="lottery-luck2"></span>
+            <span class="lottery-luck" id="lottery-luck3"></span>     
+          </div>
+          <div class="lotteryBox-row">
+            <span class="lottery-luck" id="lottery-luck4"></span>
+            <!--抽奖按钮-->
+            <span class="lotteryBtn"></span>
+            <span class="lottery-luck" id="lottery-luck5"></span>
+          </div>
+          <div class="lotteryBox-row">
+            <span class="lottery-luck" id="lottery-luck6"></span>
+            <span class="lottery-luck" id="lottery-luck7"></span>
+            
+          </div> 
+          <div class="lotteryBox-row">
+           <span class="lottery-luck" id="lottery-luck8"></span>
+            <span class="lottery-luck" id="lottery-luck9"></span>
+            <span class="lottery-luck" id="lottery-luck10"></span>
+            <span class="lottery-luck" id="lottery-luck11"></span>
+          </div>    
+        </div>
+        <!-- 结果弹出框 -->
+        <!-- 抽奖机会用完 -->
+        <div class="luckPopup luckPopup0">
+          <p class="resultText">对不起！</p>
+          <p class="leftText">亲的抽奖机会已用完</p>
+          <span class="closeBtn close">
+        </div>
+        <!-- 没中奖 -->
+        <div class="luckPopup luckPopup1">
+          <p class="resultText">亲，这次没中奖！</p>
+          <p class="resultDetail">还要加油哦！</p>
+          <p class="leftText">亲你还有<span class="leftNum">2次</span>抽奖机会哦！</p>
+          <span class="closeBtn close">
+        </div>
+        <!-- 中奖 -->
+        <div class="luckPopup luckPopup2">
+          <p>亲，恭喜您！</p>
+          <p>中了<span>***</span>奖</p>
+          <p>亲你还有<span>2次</span>抽奖机会哦！</p>
+          <span class="closeBtn close">
+        </div>
+      </div>
       <div class="list">
         <p class="listtitle"></p>
         <div class="listmove">
@@ -205,10 +256,21 @@
         <ul class="listbox"></ul>
       </div>
     </div>
-      <div class="activityAd">
-        <div class="p1">“捷”伴之旅奖等你拿</div>
-        <div class="p2">奖品由北京佰程旅游专卖店提供</div>
-        <div class="slideAd"></div>
+      <div class="activityAd" id="activityAd">
+        <div class="autoSlide">
+          <div class="imgLi"><a href="#"><img src="image/ad1.jpg" /></a></div>
+          <div class="imgLi"><a href="#"><img src="image/ad2.png" /></a></div>
+          <div class="imgLi"><a href="#"><img src="image/ad1.jpg" /></a></div>
+          <div class="imgLi"><a href="#"><img src="image/ad2.png" /></a></div>
+          <div class="imgLi"><a href="#"><img src="image/ad1.jpg" /></a></div>
+        </div> 
+        <ul class="countUl">
+          <li><span class="countcss count1">1</span></li>
+            <li><span class="countcss count2">2</span></li>
+            <li><span class="countcss count3">3</span></li>
+            <li><span class="countcss count4">4</span></li>
+            <li><span class="countcss count5">5</span></li>
+        </ul>
       </div>  
     </div>
 		<div class="tryDrive">

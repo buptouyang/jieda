@@ -1,6 +1,6 @@
 KISSY.ready(function(S){
 	var S = KISSY;
-KISSY.use('dom,anim,ajax,cookie,gallery/lineParallax/0.5/index',function(S,DOM,Anim,IO,Cookie,LineParallax){
+KISSY.use('dom,anim,ajax,cookie,gallery/slide/1.0/',function(S,DOM,Anim,IO,Cookie,Slide){
 	var E = S.Event,
 		scrollY=0,  //滚动条高度
 		windowH, //窗体高度
@@ -24,7 +24,7 @@ KISSY.use('dom,anim,ajax,cookie,gallery/lineParallax/0.5/index',function(S,DOM,A
 		mL2=[-500,-460,250,400];
 
 	for(var i=0;i<cloud.length;i++){
-		anim[i]=S.Anim(cloud[i],{marginLeft:mL1[i]+'px',filter:'alpha(opacity=0)',opacity:0},2,"easeOutStrong");
+		anim[i]=S.Anim(cloud[i],{marginLeft:mL1[i]+'px',filter:'alpha(opacity=0)',opacity:0},1,"easeOutStrong");
 		anim2[i]=S.Anim(cloud[i],{marginLeft:mL2[i]+'px',filter:'alpha(opacity=100)',opacity:1},2,"easeOutStrong");
 	}
 
@@ -95,7 +95,7 @@ KISSY.use('dom,anim,ajax,cookie,gallery/lineParallax/0.5/index',function(S,DOM,A
 		box_toTop[1]=control*0.2;  //上左右树叶
 		box_toTop[2]=control*-0.1;  //下左右树叶
 		box_toTop[3]=control*0.6;  //左红车
-		box_toTop[4]=control*0.8; //左白车
+		box_toTop[4]=control*0.9; //左白车
 		box_toTop[5]=control*-0.5; //右白车
 		
 		
@@ -187,12 +187,8 @@ autoMove=function(id){ this.initialize(id)};
 		initialize:function(id){
 			var _this=this;
 			this.move=S.get("."+id);
-						console.log(this.move.innerHTML);
-
 			this.listbox1=S.query(".listbox",this.move)[0];
-			console.log(this.listbox1.innerHTML);
 			this.listbox2=S.query(".listbox",this.move)[1];
-			console.log(this.listbox2.innerHTML);
 
 			if(this.listbox1.offsetHeight>this.move.offsetHeight){
 				this.timer=null;
@@ -216,17 +212,81 @@ autoMove=function(id){ this.initialize(id)};
 	}
 	new autoMove("listmove");
 	
-	
+	S.all(".close").on("click", function(){
+          S.DOM.css(popupBox, {display:"none"});
+        })
 
+	var slide = new Slide('activityAd',{
+		autoSlide:true,
+		effect:'hSlide',
+		timeout:5000,
+		speed:350,
+		selectedClass:'slide_hover',
+		navClass:'countUl',
+		contentClass:'autoSlide',
+		pannelClass:'imgLi',
+		touchmove:true,
+		layerSlide:true,
+		hoverStop:true
+	}); //end slide
 
 	
 		
 
 });
+ //抽奖
+KISSY.use("mmcomponents/mamaNineLottery/index", function(S, mmLottery){
+			//奖品
+		var adwardArray = {
+		  "韩国首尔之旅"    :{luckItem: [0],popupItem: 7},
+		  "泰国普吉岛之旅" :{luckItem: [9],popupItem: 6},
+		  "马尔代夫之旅":{luckItem: [7],popupItem: 4},
+		  "奥地利-法国之旅" :{luckItem: [2],popupItem: 5},
+		  "美国东部之旅" :{luckItem: [6],popupItem: 1},
+		  "捷达车模"  :{luckItem: [3],popupItem: 2},
+		  "精美T恤"  :{luckItem: [8],popupItem: 3},
+		  "雨伞"  :{luckItem: [10],popupItem: 3},
+		  "购物袋"  :{luckItem: [11],popupItem: 3},
+		  "谢谢参与"    :{luckItem: [1, 4, 5],popupItem: 0},
+		};
+		//抽奖弹窗，与抽奖器运行无关
+		var popupBox = $(".luckPopup");
+
+		//初始化
+		var mLottery = new mmLottery({
+		  app        : 'jieda',
+		  luckName   : "lottery-luck",
+		  luckNum    : 12,
+		  adwardArray: adwardArray,
+		  luckShade  : "luck-shade",
+		  rollRule   : [0,1,2,3,5,7,11,10,9,8,6,4], 
+		  luckActive : "luck-active"
+		});
+
+		//抽奖
+		mLottery.run({
+		  success: function(data){
+		    //中奖
+		    $(popupBox[adwardArray[data.name].popupItem]).show();//弹窗，仅供参考
+		  },
+		  fail: function(){
+		    //未中奖
+		    $(popupBox[adwardArray["谢谢参与"].popupItem]).show();//同上
+		  },
+		  error: function(error, value){
+		    //出错
+		    if(error == "EW01"){
+		      //过滤错误码
+		      //达到每天中奖次数
+		      $(popupBox[adwardArray["谢谢参与"].popupItem]).show();//同上
+		    }else{
+		      alert(value);
+		    }
+		  }
+		})
+	})// en lottery
 
 
 
 
-
-
-})
+});//the end

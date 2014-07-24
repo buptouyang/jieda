@@ -196,8 +196,9 @@ nav{
 	top: 80px;
 	position: relative;
 }
+/* 抽奖区域 */
 .box2 .getPrice{
-	background:#673b06; 
+	background:#673b06 ; 
 	height: 467px;
 	width:1077px;
 	margin:auto;
@@ -206,14 +207,91 @@ nav{
 	overflow: hidden;
 	padding: 45px 0 20px 0;
 }
+/* 抽奖器 */
 .getPrice .lottery{
-	width:410px;
-	height: 410px;
 	float:left;
 	margin-left: 40px;
-	background: #4a351b;
+	background: #4a351b ;
 	border-radius: 5px;
+	position: relative;
+	padding:5px;
 }
+.lotteryBox{width:400px;height: 400px;}
+.lotteryBox .lottery-luck{display: block;float:left;width: 100px;height: 100px;position: relative;}
+#lottery-luck0{background: url("http://gtms04.alicdn.com/tps/i4/T1hwO_FyBXXXbxpFMQ-123-104.png") no-repeat;}
+#lottery-luck1{background: url("http://gtms02.alicdn.com/tps/i2/T1QzK_Fw0XXXbxpFMQ-123-104.png") no-repeat;}
+#lottery-luck2{background: url("http://gtms04.alicdn.com/tps/i4/T1hwO_FyBXXXbxpFMQ-123-104.png") no-repeat;}
+#lottery-luck3{background: url("http://gtms04.alicdn.com/tps/i4/T1hwO_FyBXXXbxpFMQ-123-104.png") no-repeat;}
+#lottery-luck4{background: url("http://gtms02.alicdn.com/tps/i2/T1QzK_Fw0XXXbxpFMQ-123-104.png") no-repeat;}
+#lottery-luck5{background: url("http://gtms04.alicdn.com/tps/i4/T1hwO_FyBXXXbxpFMQ-123-104.png") no-repeat;}
+#lottery-luck6{background: url("http://gtms04.alicdn.com/tps/i4/T1hwO_FyBXXXbxpFMQ-123-104.png") no-repeat; position:absolute; top:205px;}
+#lottery-luck7{background: url("http://gtms02.alicdn.com/tps/i2/T1QzK_Fw0XXXbxpFMQ-123-104.png") no-repeat;}
+#lottery-luck8{background: url("http://gtms04.alicdn.com/tps/i4/T1hwO_FyBXXXbxpFMQ-123-104.png") no-repeat;}
+#lottery-luck9{background: url("http://gtms04.alicdn.com/tps/i4/T1hwO_FyBXXXbxpFMQ-123-104.png") no-repeat;}
+#lottery-luck10{background: url("http://gtms04.alicdn.com/tps/i4/T1hwO_FyBXXXbxpFMQ-123-104.png") no-repeat;}
+#lottery-luck11{background: url("http://gtms04.alicdn.com/tps/i4/T1hwO_FyBXXXbxpFMQ-123-104.png") no-repeat;}
+
+
+/*格子点亮*/
+.lotteryBox .luck-active{z-index: 30;} 
+.lotteryBox .lotteryBtn{display: block;float:left;width: 200px;height: 200px;background: url("image/lotteryBtn.png") center no-repeat;cursor: pointer}
+/*遮层样式，背景颜色和透明值可自己设置*/
+.luck-shade{position: absolute;top: 0;left: 0;width: 200px;height: 200px;background-color: #999;opacity: 0.7;filter:alpha(opacity=70);z-index: 15;display:none;}
+
+.luckPopup0,.luckPopup1,.luckPopup2{
+	width:399px;
+	height: 285px;
+	background: url("image/popbg.png") no-repeat;
+	display: none;
+}
+.luckPopup0 .resultText{
+	color: #f9c334;
+	font-size: 45px;
+	padding-top: 60px;
+	padding-left: 40px;
+
+}
+.luckPopup0 .leftText{
+	color: #fff;
+	font-size: 20px;
+	padding-left: 40px;
+	
+}
+.luckPopup1 .resultText{
+	color: #f9c334;
+	font-size: 28px;
+	padding-top: 40px;
+	padding-left: 40px;
+	
+}
+.luckPopup1 .resultDetail{
+	color: #fff;
+	font-size: 30px;
+	padding-left: 40px;
+	
+}
+
+.luckPopup1 .leftText{
+	color: #ca9c65;
+	font-size: 16px;
+	padding-left: 40px;
+	
+}
+.luckPopup1 .leftNum{
+	color: #f9c334;
+	font-size: 20px;
+}
+.luckPopup .closeBtn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 45px;
+	height: 45px;
+	cursor: pointer;
+}
+
+
+/* 获奖名单 */
 .getPrice .list{
 	width:150px;	
 	float:left;
@@ -238,29 +316,29 @@ nav{
 	float: left;
 	width:430px;
 	text-align: center;
+	overflow: hidden;
+	position: relative;
 }
-.activityAd .p1{
-	height: 60px;
-	line-height: 60px;
-	color: #fff;
-	font-size: 30px;
-	font-weight: bold;
-	padding: 0 5px;
-	background: #da4d26;
+.activityAd .countUl{
+	position: absolute;
+	bottom: 80px;
+	left: 100px;
+	z-index: 10;
 }
-.activityAd .p2{
-	height: 35px;
-	line-height: 35px;
-	color: #613c0e;
-	font-size: 16px;
-	padding: 0 5px;
-	background: #fff;
+.activityAd .countUl li{ 
+	width:19px; 
+	height:19px; 
+	text-align: center;
+	cursor:pointer; 
+	float:left;
+	margin:5px;
+	background: url("image/countul.png") center no-repeat;
 }
-.activityAd .slideAd{
-	background:#4a351b;
-	width:430px;
-	height: 320px; 
+.activityAd .countUl li.slide_hover{
+	background: url("image/counthover.png") center no-repeat;
 }
+.activityAd .countUl span{display:block; color:#3d7768;}
+
 .box2 .tryDrive{
 	background: url("image/trydrive.png") no-repeat center;
 	height: 130px;
