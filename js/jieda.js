@@ -1,5 +1,6 @@
 KISSY.ready(function(S){
 	var S = KISSY;
+	var $=jQuery;
 KISSY.use('dom,anim,ajax,cookie,gallery/slide/1.0/',function(S,DOM,Anim,IO,Cookie,Slide){
 	var E = S.Event,
 		scrollY=0,  //滚动条高度
@@ -69,9 +70,10 @@ KISSY.use('dom,anim,ajax,cookie,gallery/slide/1.0/',function(S,DOM,Anim,IO,Cooki
 			
 			$(window).resize(function(){
 				windowH = $(window).height();
-				//windowH >1000 ? : $('#parallax').css({height: 5000+windowH});
+				console.log(windowH);
+				windowH >1000 ?$('#parallax').css(1700) : $('#parallax').css({height: 1200+windowH});
 			}).resize();
-			$('#parallax').css({height: 1990}) 	
+			//$('#parallax').css({height: 1800}) 	
 			/*$(document).mousewheel(function(e, delta){
 				window.scrollBy(0,delta * -100);
 			});*/
