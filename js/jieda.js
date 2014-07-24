@@ -71,7 +71,7 @@ KISSY.use('dom,anim,ajax,cookie,gallery/lineParallax/0.5/index',function(S,DOM,A
 				windowH = $(window).height();
 				//windowH >1000 ? : $('#parallax').css({height: 5000+windowH});
 			}).resize();
-			$('#parallax').css({height: 1910}) 	
+			$('#parallax').css({height: 1990}) 	
 			/*$(document).mousewheel(function(e, delta){
 				window.scrollBy(0,delta * -100);
 			});*/
@@ -181,7 +181,40 @@ KISSY.use('dom,anim,ajax,cookie,gallery/lineParallax/0.5/index',function(S,DOM,A
 	
 
 	
+//获奖名单动画
+autoMove=function(id){ this.initialize(id)};
+	autoMove.prototype={
+		initialize:function(id){
+			var _this=this;
+			this.move=S.get("."+id);
+						console.log(this.move.innerHTML);
 
+			this.listbox1=S.query(".listbox",this.move)[0];
+			console.log(this.listbox1.innerHTML);
+			this.listbox2=S.query(".listbox",this.move)[1];
+			console.log(this.listbox2.innerHTML);
+
+			if(this.listbox1.offsetHeight>this.move.offsetHeight){
+				this.timer=null;
+				this.listbox2.innerHTML=this.listbox1.innerHTML;
+				this.timer=setInterval(function(){_this.toMove()},100);
+				E.on(_this.move,"mouseover",function(){
+					clearInterval(_this.timer);
+				})
+				E.on(_this.move,"mouseout",function(){
+					_this.timer=setInterval(function(){_this.toMove()},100);
+				})
+			}
+		},
+		toMove:function(){
+			if(this.listbox2.offsetTop-this.move.scrollTop<=0){
+				this.move.scrollTop-=this.listbox1.offsetHeight;
+			}else{
+				this.move.scrollTop++;
+			}
+		}
+	}
+	new autoMove("listmove");
 	
 	
 
