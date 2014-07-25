@@ -1,5 +1,6 @@
 KISSY.ready(function(S){
 	var S = KISSY;
+	var $ = jQuery;
 KISSY.use('dom,anim,ajax,cookie,gallery/slide/1.0/',function(S,DOM,Anim,IO,Cookie,Slide){
 	var E = S.Event,
 		scrollY=0,  //滚动条高度
@@ -20,15 +21,18 @@ KISSY.use('dom,anim,ajax,cookie,gallery/slide/1.0/',function(S,DOM,Anim,IO,Cooki
 		open1=false,open2=true,
 		anim=new Array();
 		anim2=new Array();
-		mL1=[-800,-900,778,915],
-		mL2=[-500,-460,250,400];
+		mL1=[-700,-800,600,700],
+		mL2=[-500,-460,270,400];
 
 	for(var i=0;i<cloud.length;i++){
 		anim[i]=S.Anim(cloud[i],{marginLeft:mL1[i]+'px',filter:'alpha(opacity=0)',opacity:0},1,"easeOutStrong");
 		anim2[i]=S.Anim(cloud[i],{marginLeft:mL2[i]+'px',filter:'alpha(opacity=100)',opacity:1},2,"easeOutStrong");
 	}
 
-
+	//太阳
+	var sunMov = S.one(".sun");
+	S.Anim(sunMov,{top:"100px",left:"280px"},2,"ease").run();
+	S.Anim(sunMov,{top:"250px",left:"100px"},3,"ease").run();
 
 
 	$('.arrow').jrumble({
@@ -38,6 +42,14 @@ KISSY.use('dom,anim,ajax,cookie,gallery/slide/1.0/',function(S,DOM,Anim,IO,Cooki
 		speed:100
 	});
 	$('.arrow').trigger('startRumble');
+
+	$('.wing').jrumble({
+		x: 10,
+		y: 10,
+		rotation: 1,
+		speed:150
+	});
+	$('.wing').trigger('startRumble');
 
 	//回顶部
 	var toTop=S.get('.toTop');
@@ -71,7 +83,7 @@ KISSY.use('dom,anim,ajax,cookie,gallery/slide/1.0/',function(S,DOM,Anim,IO,Cooki
 				windowH = $(window).height();
 				//windowH >1000 ? : $('#parallax').css({height: 5000+windowH});
 			}).resize();
-			$('#parallax').css({height: 1990}) 	
+			//$('#parallax').css({height: 1990}) 	
 			/*$(document).mousewheel(function(e, delta){
 				window.scrollBy(0,delta * -100);
 			});*/
@@ -158,29 +170,35 @@ KISSY.use('dom,anim,ajax,cookie,gallery/slide/1.0/',function(S,DOM,Anim,IO,Cooki
 		scrollY>=200 ? (car.fadeOut(.5)):(car.fadeIn(.5));*/
 	}
 
-	
+
+//时光机
+var machineslide = new Slide('timeMachine',{
+		autoSlide:true,
+		effect:'hSlide',
+		timeout:5000,
+		speed:350,
+		selectedClass:'m_hover',
+		navClass:'orderUl',
+		contentClass:'machinePlay',
+		pannelClass:'textLi',
+		touchmove:true,
+		layerSlide:true,
+		hoverStop:true
+	}); //end slide
+
+var step = 0;
+var html ="";
+
+switch(step){
+	case 0:;
+	case 1:;
+	case 2:;
+	case 3:;
+}
 
 
-	//太阳
-	var sunMove=S.get('.sun');
-	var step = 0;
-	var r = -150;
-	
-	var timer=setInterval(function () {
-			/*r=r+1;
-			 if(r>600){
-					r-=1;
-			}*/
-			/*if (step > 1.5) {
-					 var a=window.clearInterval(timer);
-			}*/
-			/*sunMove.style.left = 80- r * Math.sin(step)+"px";
-			sunMove.style.top = 100 + r * Math.cos(step)+"px";*/
-			step += 1/400;
-	}, 1);
-	
 
-	
+
 //获奖名单动画
 autoMove=function(id){ this.initialize(id)};
 	autoMove.prototype={
@@ -214,7 +232,7 @@ autoMove=function(id){ this.initialize(id)};
 	
 	S.all(".close").on("click", function(){
           S.DOM.css(popupBox, {display:"none"});
-        })
+        });
 
 	var slide = new Slide('activityAd',{
 		autoSlide:true,
@@ -234,8 +252,20 @@ autoMove=function(id){ this.initialize(id)};
 		
 
 });
+
+ KISSY.config({
+        debug: true,
+        packages: [ 
+          {
+            name: "mmcomponents",
+            path: "http://g.tbcdn.cn/mm/mamacomponent/0.0.6/",
+            combine:false
+          }
+        ]
+      });
+
  //抽奖
-KISSY.use("mmcomponents/mamaNineLottery/index", function(S, mmLottery){
+KISSY.use("mmcomponents/mamaNineLottery/index,mmcomponents/mamaShare/index", function(S, mmLottery,mmShare){
 			//奖品
 		var adwardArray = {
 		  "韩国首尔之旅"    :{luckItem: [0],popupItem: 7},
@@ -263,30 +293,49 @@ KISSY.use("mmcomponents/mamaNineLottery/index", function(S, mmLottery){
 		  luckActive : "luck-active"
 		});
 
-		//抽奖
-		mLottery.run({
-		  success: function(data){
-		    //中奖
-		    $(popupBox[adwardArray[data.name].popupItem]).show();//弹窗，仅供参考
-		  },
-		  fail: function(){
-		    //未中奖
-		    $(popupBox[adwardArray["谢谢参与"].popupItem]).show();//同上
-		  },
-		  error: function(error, value){
-		    //出错
-		    if(error == "EW01"){
-		      //过滤错误码
-		      //达到每天中奖次数
-		      $(popupBox[adwardArray["谢谢参与"].popupItem]).show();//同上
-		    }else{
-		      alert(value);
-		    }
-		  }
-		})
-	})// en lottery
+
+		var mShare = new mmShare({
+			  pageUrl : "http://www.taobao.com/market/alimama/chowsangsang14214.php",
+			  clientId: "180568",
+			  success:function(){
+			  	//alert("good");
+			  	//抽奖
+					mLottery.run({
+					  success: function(data){
+					    //中奖
+					    $(popupBox[adwardArray[data.name].popupItem]).show();//弹窗，仅供参考
+					  },
+					  fail: function(){
+					    //未中奖
+					    $(popupBox[adwardArray["谢谢参与"].popupItem]).show();//同上
+					  },
+					  error: function(error, value){
+					    //出错
+					    if(error == "EW01"){
+					      //过滤错误码
+					      //达到每天中奖次数
+					      $(popupBox[adwardArray["谢谢参与"].popupItem]).show();//同上
+					    }else{
+					      alert(value);
+					    }
+					  }
+					});
+
+			  }
+			});
+
+			S.one(".lotteryBtn").on("click", function(){
+			  mShare.show({
+			    site   : "sina",
+			    comment: "亲们，我参加了#捷达带您游世界#活动，有机会免费畅游时尚的首尔、风情的普吉岛、浪漫的马尔代夫、奥地利、法国、德国",
+			    title  : "捷达",
+			    pic    : "http://gtms03.alicdn.com/tps/i3/T12UDkFupcXXXmVhsr-214-214.png",
+			  });
+			})
 
 
+	});// en lottery
 
+	
 
 });//the end
